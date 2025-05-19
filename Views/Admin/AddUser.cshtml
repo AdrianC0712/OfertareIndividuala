@@ -1,0 +1,40 @@
+﻿@model OfertareIndividuala.Controllers.UserViewModel
+
+@{
+    ViewData["Title"] = "Adăugare utilizator";
+}
+
+<h2>Adăugare utilizator</h2>
+
+<form asp-action="AddUser" method="post">
+    <div class="form-group">
+        <label asp-for="Nume_utilizator">Email</label>
+        <input asp-for="Nume_utilizator" class="form-control" />
+        <span asp-validation-for="Nume_utilizator" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password_utilizator">Parolă</label>
+        <input asp-for="Password_utilizator" class="form-control" type="password" />
+        <span asp-validation-for="Password_utilizator" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ConfirmPassword">Confirmă parola</label>
+        <input asp-for="ConfirmPassword" class="form-control" type="password" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Type_of_utilizator">Tip utilizator</label>
+        <select asp-for="Type_of_utilizator" class="form-control">
+            <option value="">-- Selectați tipul --</option>
+            <option value="Administrator">Administrator</option>
+            <option value="UtilizatorDor2Dor">UtilizatorDor2Dor</option>
+        </select>
+        <span asp-validation-for="Type_of_utilizator" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Adaugă utilizator</button>
+    <a href="@Url.Action("ManageUsers", "Admin")" class="btn btn-secondary">Anulează</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Panou de administrare";
+}
+
+<h2>Panou de administrare</h2>
+
+<div class="alert alert-info" style="border-color: #003087; color: #003087;">
+    Bun venit în panoul de administrare! Selectați o opțiune mai jos pentru a gestiona aplicația.
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <a href="@Url.Action("ViewRecords", "Admin")" class="btn btn-primary btn-block mb-2">Vizualizare înregistrări UtilizatorDor2Dor</a>
+    </div>
+    <div class="col-md-4">
+        <a href="@Url.Action("ManageUsers", "Admin")" class="btn btn-primary btn-block mb-2">Gestionare utilizatori UtilizatorDor2Dor</a>
+    </div>
+    <div class="col-md-4">
+        <a href="@Url.Action("ManageOffers", "Admin")" class="btn btn-primary btn-block mb-2">Gestionare oferte</a>
+    </div>
+</div>
+
+<a href="@Url.Action("SelectClientType", "Client")" class="btn btn-secondary mt-3">Accesează selecția tipului de client</a>
+<a href="@Url.Action("Login", "Auth")" class="btn btn-secondary mt-3">Deconectare</a>

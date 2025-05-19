@@ -1,0 +1,26 @@
+﻿@model OfertareIndividuala.Models.ClientTypeModel
+
+@{
+    ViewData["Title"] = "Selectare tip client";
+}
+
+<h2>Selectare tip client</h2>
+
+<form asp-action="SelectClientType" method="post">
+    <div class="form-group">
+        <label asp-for="ClientType">Tip client</label>
+        <select asp-for="ClientType" class="form-control">
+            <option value="">-- Selectați tipul --</option>
+            <option value="New">Client nou</option>
+            <option value="NewNoData">Client nou fără date</option>
+            <option value="Starnet">Client Starnet</option>
+        </select>
+        <span asp-validation-for="ClientType" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Continuă</button>
+    <a href="@Url.Action("Logout", "Auth")" class="btn btn-secondary">Deconectare</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

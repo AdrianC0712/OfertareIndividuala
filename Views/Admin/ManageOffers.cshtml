@@ -1,0 +1,60 @@
+﻿@model List<OfertareIndividuala.Models.OfferModel>
+
+@{
+    ViewData["Title"] = "Gestionare oferte";
+}
+
+<h2>Gestionare oferte</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert" style="border-color: #003087; color: #003087;">
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert" style="border-color: #003087; color: #003087;">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (Model.Any())
+{
+    <table class="table table-bordered" style="border-color: #003087;">
+        <thead style="background-color: #003087; color: #FFFFFF;">
+            <tr>
+                <th>Denumire ofertă</th>
+                <th>Tip ofertă</th>
+                <th>Suma ofertă</th>
+                <th>Suma magazin</th>
+                <th>Acțiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var offer in Model)
+            {
+                <tr>
+                    <td>@offer.Denumire_Oferta_Speciala</td>
+                    <td>@offer.Type_Of_Oferta</td>
+                    <td>@offer.Suma_Oferta</td>
+                    <td>@offer.Suma_Magazin</td>
+                    <td>
+                        <a href="@Url.Action("EditOffer", "Admin", new { id = offer.Id_Oferta_Speciala })" class="btn btn-primary btn-sm">Editează</a>
+                        <form asp-action="DeleteOffer" method="post" style="display:inline;" onsubmit="return confirm('Sunteți sigur că doriți să ștergeți această ofertă?');">
+                            <input type="hidden" name="id" value="@offer.Id_Oferta_Speciala" />
+                            <button type="submit" class="btn btn-danger btn-sm">Șterge</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nu există oferte disponibile.</p>
+}
+
+<a href="@Url.Action("AddOffer", "Admin")" class="btn btn-primary mb-2">Adăugare ofertă nouă</a>
+<a href="@Url.Action("AdminPanel", "Admin")" class="btn btn-secondary">Înapoi la panoul de administrare</a>

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Ofertare Individuala</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: #F5F6F5; /* Fundal gri deschis */
+        }
+
+        .btn-primary {
+            background-color: #003087; /* Albastru închis StarNet */
+            border-color: #003087;
+        }
+
+            .btn-primary:hover {
+                background-color: #00A1D6; /* Albastru deschis StarNet */
+                border-color: #00A1D6;
+            }
+
+        .form-control {
+            border-color: #003087;
+        }
+
+        h2 {
+            color: #003087;
+        }
+
+        a {
+            color: #00A1D6;
+        }
+
+            a:hover {
+                color: #003087;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿@model OfertareIndividuala.Models.QuestionnaireModel
+
+@{
+    ViewData["Title"] = "Chestionar client nou fără date";
+}
+
+<h2>Chestionar client nou fără date</h2>
+
+<form asp-action="NewNoDataForm" method="post">
+    <div class="form-group">
+        <label>V-ar interesa oferta specială cu SMART TV la preț de 1 leu?</label>
+        <select asp-for="SmartTvOffer" class="form-control">
+            <option value="">-- Selectați --</option>
+            <option value="Yes">Da</option>
+            <option value="No">Nu</option>
+        </select>
+        <span asp-validation-for="SmartTvOffer" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>V-ar interesa reduceri la electronice sau electrocasnice?</label>
+        <select asp-for="ElectronicsDiscount" class="form-control">
+            <option value="">-- Selectați --</option>
+            <option value="Yes">Da</option>
+            <option value="No">Nu</option>
+        </select>
+        <span asp-validation-for="ElectronicsDiscount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Sunteți satisfăcuți de calitatea Wi-Fi la domiciliu?</label>
+        <select asp-for="WifiSatisfaction" class="form-control">
+            <option value="">-- Selectați --</option>
+            <option value="Yes">Da</option>
+            <option value="No">Nu</option>
+        </select>
+        <span asp-validation-for="WifiSatisfaction" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generează oferte</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

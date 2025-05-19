@@ -1,0 +1,46 @@
+﻿@model List<OfertareIndividuala.Controllers.RecordViewModel>
+
+@{
+    ViewData["Title"] = "Vizualizare înregistrări UtilizatorDor2Dor";
+}
+
+<h2>Vizualizare înregistrări UtilizatorDor2Dor</h2>
+
+@if (Model.Any())
+{
+    <table class="table table-bordered" style="border-color: #003087;">
+        <thead style="background-color: #003087; color: #FFFFFF;">
+            <tr>
+                <th>Utilizator</th>
+                <th>Nume client</th>
+                <th>Telefon client</th>
+                <th>Email client</th>
+                <th>Ofertă SMART TV</th>
+                <th>Reducere electronice</th>
+                <th>Satisfacție Wi-Fi</th>
+                <th>Data creării</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model)
+            {
+                <tr>
+                    <td>@record.UserEmail</td>
+                    <td>@record.ClientName</td>
+                    <td>@record.ClientPhone</td>
+                    <td>@record.ClientEmail</td>
+                    <td>@record.SmartTvOffer</td>
+                    <td>@record.ElectronicsDiscount</td>
+                    <td>@record.WifiSatisfaction</td>
+                    <td>@record.CreatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nu există înregistrări completate de utilizatorii UtilizatorDor2Dor.</p>
+}
+
+<a href="@Url.Action("AdminPanel", "Admin")" class="btn btn-primary">Înapoi la panoul de administrare</a>

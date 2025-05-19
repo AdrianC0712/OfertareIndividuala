@@ -1,0 +1,41 @@
+﻿@model OfertareIndividuala.Models.QuestionnaireModel
+
+@{
+    ViewData["Title"] = "Oferte generate";
+    var offers = ViewBag.Offers as List<OfertareIndividuala.Models.OfferModel>;
+    int questionnaireResponseId = ViewBag.QuestionnaireResponseId;
+}
+
+<h2>Oferte generate</h2>
+
+@if (offers != null && offers.Any())
+{
+    <table class="table table-bordered" style="border-color: #003087;">
+        <thead style="background-color: #003087; color: #FFFFFF;">
+            <tr>
+                <th>Denumire ofertă</th>
+                <th>Tip ofertă</th>
+                <th>Suma ofertă</th>
+                <th>Suma magazin</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var offer in offers)
+            {
+                <tr>
+                    <td>@offer.Denumire_Oferta_Speciala</td>
+                    <td>@offer.Type_Of_Oferta</td>
+                    <td>@offer.Suma_Oferta</td>
+                    <td>@offer.Suma_Magazin</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nu s-au găsit oferte disponibile.</p>
+}
+
+<a asp-action="AddClientDetails" asp-route-questionnaireResponseId="@questionnaireResponseId" class="btn btn-primary">Adăugă detalii client</a>
+<a asp-action="SelectClientType" asp-controller="Client" class="btn btn-secondary">Înapoi la selecția tipului de client</a>

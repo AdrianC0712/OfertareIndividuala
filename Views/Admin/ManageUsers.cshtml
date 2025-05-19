@@ -1,0 +1,56 @@
+﻿@model List<OfertareIndividuala.Controllers.UserViewModel>
+
+@{
+    ViewData["Title"] = "Gestionare utilizatori UtilizatorDor2Dor";
+}
+
+<h2>Gestionare utilizatori UtilizatorDor2Dor</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert" style="border-color: #003087; color: #003087;">
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert" style="border-color: #003087; color: #003087;">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@if (Model.Any())
+{
+    <table class="table table-bordered" style="border-color: #003087;">
+        <thead style="background-color: #003087; color: #FFFFFF;">
+            <tr>
+                <th>Email</th>
+                <th>Tip utilizator</th>
+                <th>Acțiuni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Nume_utilizator</td>
+                    <td>@user.Type_of_utilizator</td>
+                    <td>
+                        <a href="@Url.Action("EditUser", "Admin", new { id = user.Id_utilizator })" class="btn btn-primary btn-sm">Editează</a>
+                        <form asp-action="DeleteUser" method="post" style="display:inline;" onsubmit="return confirm('Sunteți sigur că doriți să ștergeți acest utilizator?');">
+                            <input type="hidden" name="id" value="@user.Id_utilizator" />
+                            <button type="submit" class="btn btn-danger btn-sm">Șterge</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nu există utilizatori UtilizatorDor2Dor.</p>
+}
+
+<a href="@Url.Action("AddUser", "Admin")" class="btn btn-primary mb-2">Adăugare utilizator nou</a>
+<a href="@Url.Action("AdminPanel", "Admin")" class="btn btn-secondary">Înapoi la panoul de administrare</a>

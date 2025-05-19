@@ -1,0 +1,37 @@
+﻿@model OfertareIndividuala.Models.OfferModel
+
+@{
+    ViewData["Title"] = "Editare ofertă";
+}
+
+<h2>Editare ofertă</h2>
+
+<form asp-action="EditOffer" method="post">
+    <input type="hidden" asp-for="Id_Oferta_Speciala" />
+    <div class="form-group">
+        <label asp-for="Denumire_Oferta_Speciala">Denumire ofertă</label>
+        <input asp-for="Denumire_Oferta_Speciala" class="form-control" />
+        <span asp-validation-for="Denumire_Oferta_Speciala" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Type_Of_Oferta">Tip ofertă</label>
+        <input asp-for="Type_Of_Oferta" class="form-control" type="number" />
+        <span asp-validation-for="Type_Of_Oferta" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Suma_Oferta">Suma ofertă</label>
+        <input asp-for="Suma_Oferta" class="form-control" />
+        <span asp-validation-for="Suma_Oferta" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Suma_Magazin">Suma magazin</label>
+        <input asp-for="Suma_Magazin" class="form-control" />
+        <span asp-validation-for="Suma_Magazin" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvează</button>
+    <a href="@Url.Action("ManageOffers", "Admin")" class="btn btn-secondary">Anulează</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

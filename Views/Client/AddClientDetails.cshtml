@@ -1,0 +1,32 @@
+﻿@model OfertareIndividuala.Models.ClientNouFaraDateModel
+
+@{
+    ViewData["Title"] = "Adăugare detalii client";
+    int questionnaireResponseId = ViewBag.QuestionnaireResponseId;
+}
+
+<h2>Adăugare detalii client</h2>
+
+<form asp-action="AddClientDetails" method="post">
+    <input type="hidden" name="questionnaireResponseId" value="@questionnaireResponseId" />
+    <div class="form-group">
+        <label asp-for="Nume_prenume_client">Nume și prenume</label>
+        <input asp-for="Nume_prenume_client" class="form-control" />
+        <span asp-validation-for="Nume_prenume_client" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Nr_telefon_client">Număr de telefon</label>
+        <input asp-for="Nr_telefon_client" class="form-control" />
+        <span asp-validation-for="Nr_telefon_client" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="E_mail_client">Email</label>
+        <input asp-for="E_mail_client" class="form-control" />
+        <span asp-validation-for="E_mail_client" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Salvează</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
