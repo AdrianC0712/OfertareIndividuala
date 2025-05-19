@@ -151,11 +151,11 @@ namespace OfertareIndividuala.Controllers
             var offers = new List<OfferModel>();
 
             // Logică bazată pe răspunsuri
-            if (model.SmartTvOffer == "Yes")
+            if (model.SmartTvOffer == "No" && model.ElectronicsDiscount == "No" && model.WifiSatisfaction == "No")
             {
-                // Oferte SMART TV (Type_Of_Oferta = 1)
+                // Oferte SMART TV
                 offers.AddRange(_context.Oferte_Speciale
-                    .Where(o => o.Type_Of_Oferta == 1)
+                    .Where(o => new[] { 3, 7 }.Contains(o.Type_Of_Oferta))
                     .Select(o => new OfferModel
                     {
                         Id_Oferta_Speciala = o.Id_Oferta_Speciala,
@@ -166,11 +166,11 @@ namespace OfertareIndividuala.Controllers
                     }));
             }
 
-            if (model.ElectronicsDiscount == "Yes")
+            if (model.SmartTvOffer == "No" && model.ElectronicsDiscount == "No" && model.WifiSatisfaction == "Yes")
             {
-                // Oferte reduceri (Type_Of_Oferta = 2)
+                // Oferte SMART TV
                 offers.AddRange(_context.Oferte_Speciale
-                    .Where(o => o.Type_Of_Oferta == 2)
+                    .Where(o => new[] { 4, 7 }.Contains(o.Type_Of_Oferta))
                     .Select(o => new OfferModel
                     {
                         Id_Oferta_Speciala = o.Id_Oferta_Speciala,
@@ -181,11 +181,11 @@ namespace OfertareIndividuala.Controllers
                     }));
             }
 
-            if (model.WifiSatisfaction == "No")
+            if (model.SmartTvOffer == "No" && model.ElectronicsDiscount == "Yes" && model.WifiSatisfaction == "No")
             {
-                // Oferte Wi-Fi (Type_Of_Oferta = 3, 4, 5, 7)
+                // Oferte SMART TV
                 offers.AddRange(_context.Oferte_Speciale
-                    .Where(o => new[] { 3, 4, 5, 7 }.Contains(o.Type_Of_Oferta))
+                    .Where(o => new[] { 2, 5, 7 }.Contains(o.Type_Of_Oferta))
                     .Select(o => new OfferModel
                     {
                         Id_Oferta_Speciala = o.Id_Oferta_Speciala,
@@ -196,6 +196,80 @@ namespace OfertareIndividuala.Controllers
                     }));
             }
 
+            if (model.SmartTvOffer == "Yes" && model.ElectronicsDiscount == "No" && model.WifiSatisfaction == "No")
+            {
+                // Oferte SMART TV
+                offers.AddRange(_context.Oferte_Speciale
+                    .Where(o => new[] { 1, 5, 7 }.Contains(o.Type_Of_Oferta))
+                    .Select(o => new OfferModel
+                    {
+                        Id_Oferta_Speciala = o.Id_Oferta_Speciala,
+                        Denumire_Oferta_Speciala = o.Denumire_Oferta_Speciala,
+                        Type_Of_Oferta = o.Type_Of_Oferta,
+                        Suma_Oferta = o.Suma_Oferta,
+                        Suma_Magazin = o.Suma_Magazin
+                    }));
+            }
+
+            if (model.SmartTvOffer == "No" && model.ElectronicsDiscount == "Yes" && model.WifiSatisfaction == "Yes")
+            {
+                // Oferte SMART TV
+                offers.AddRange(_context.Oferte_Speciale
+                    .Where(o => new[] { 2, 4, 7 }.Contains(o.Type_Of_Oferta))
+                    .Select(o => new OfferModel
+                    {
+                        Id_Oferta_Speciala = o.Id_Oferta_Speciala,
+                        Denumire_Oferta_Speciala = o.Denumire_Oferta_Speciala,
+                        Type_Of_Oferta = o.Type_Of_Oferta,
+                        Suma_Oferta = o.Suma_Oferta,
+                        Suma_Magazin = o.Suma_Magazin
+                    }));
+            }
+
+            if (model.SmartTvOffer == "Yes" && model.ElectronicsDiscount == "No" && model.WifiSatisfaction == "Yes")
+            {
+                // Oferte SMART TV
+                offers.AddRange(_context.Oferte_Speciale
+                    .Where(o => new[] { 1, 4, 7 }.Contains(o.Type_Of_Oferta))
+                    .Select(o => new OfferModel
+                    {
+                        Id_Oferta_Speciala = o.Id_Oferta_Speciala,
+                        Denumire_Oferta_Speciala = o.Denumire_Oferta_Speciala,
+                        Type_Of_Oferta = o.Type_Of_Oferta,
+                        Suma_Oferta = o.Suma_Oferta,
+                        Suma_Magazin = o.Suma_Magazin
+                    }));
+            }
+
+            if (model.SmartTvOffer == "Yes" && model.ElectronicsDiscount == "Yes" && model.WifiSatisfaction == "No")
+            {
+                // Oferte SMART TV
+                offers.AddRange(_context.Oferte_Speciale
+                    .Where(o => new[] { 1, 2, 5, 7 }.Contains(o.Type_Of_Oferta))
+                    .Select(o => new OfferModel
+                    {
+                        Id_Oferta_Speciala = o.Id_Oferta_Speciala,
+                        Denumire_Oferta_Speciala = o.Denumire_Oferta_Speciala,
+                        Type_Of_Oferta = o.Type_Of_Oferta,
+                        Suma_Oferta = o.Suma_Oferta,
+                        Suma_Magazin = o.Suma_Magazin
+                    }));
+            }
+
+            if (model.SmartTvOffer == "Yes" && model.ElectronicsDiscount == "Yes" && model.WifiSatisfaction == "Yes")
+            {
+                // Oferte SMART TV
+                offers.AddRange(_context.Oferte_Speciale
+                    .Where(o => new[] { 1, 2, 4, 7 }.Contains(o.Type_Of_Oferta))
+                    .Select(o => new OfferModel
+                    {
+                        Id_Oferta_Speciala = o.Id_Oferta_Speciala,
+                        Denumire_Oferta_Speciala = o.Denumire_Oferta_Speciala,
+                        Type_Of_Oferta = o.Type_Of_Oferta,
+                        Suma_Oferta = o.Suma_Oferta,
+                        Suma_Magazin = o.Suma_Magazin
+                    }));
+            }
             // Ofertă implicită dacă nu există alte oferte
             if (!offers.Any())
             {
